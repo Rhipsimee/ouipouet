@@ -25,6 +25,8 @@ public class AppBatch {
 		JobExecution jobex = joblau.run(job, new JobParameters());
 		System.out.println("Exit status :" + jobex.getStatus());
 		
+		
+		// je suis un commentaire
 	   
 
 		
