@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:batch="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/batch https://www.springframework.org/schema/batch/spring-batch-2.1.xsd
+	http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<description>Example job to get you started. It provides a skeleton for a typical batch application.</description>
+ 	
+	<!-- <batch:job id="job1">
+		<batch:step id="step1"  >			
+			<batch:tasklet transaction-manager="transactionManager" start-limit="100" >
+				<batch:chunk reader="reader" writer="writer" commit-interval="1" />
+			</batch:tasklet>
+		</batch:step>
+	</batch:job>  -->
+	
+	 <bean id = "task"
+      class = "com.adaming.batch.task" />
+      
+      <bean id = "task2"
+      class = "com.adaming.batch.task2" />
+	
+	<batch:job id="job2">
+		<batch:step id="coucou" next="coucou2" >			
+			<batch:tasklet ref="task" />
+		
+		</batch:step>
+		<batch:step id="coucou2"  >			
+			<batch:tasklet ref="task2" />
+		
+		</batch:step>
+		
+	</batch:job> 
+	
+	
+
+<bean id = "jobRepository"  
+      class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">
+      <property name = "transactionManager" ref = "transactionManager" />
+   </bean>    
+     
+   <bean id = "transactionManager"
+      class = "org.springframework.batch.support.transaction.ResourcelessTransactionManager" />  
+   <bean id = "jobLauncher"
+      class = "org.springframework.batch.core.launch.support.SimpleJobLauncher">
+      <property name = "jobRepository" ref = "jobRepository" />
+   </bean> 
+
+
+</beans>

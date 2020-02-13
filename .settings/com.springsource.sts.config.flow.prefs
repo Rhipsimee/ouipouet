@@ -1,0 +1,2 @@
+//com.springsource.sts.config.flow.coordinates\:http\://www.springframework.org/schema/batch\:/SpringBatchNon/src/main/resources/META-INF/spring/module-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<graph>\r\n<element clazz\="JobModelElement" type\="job">\r\n<structure end\="1208" endstart\="1196" start\="988" startend\="1009"/>\r\n<bounds height\="168" width\="110" x\="15" y\="17"/>\r\n</element>\r\n</graph>
+eclipse.preferences.version=1
